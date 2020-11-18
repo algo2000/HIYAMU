@@ -10,6 +10,11 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
+import java.util.Base64;
 import java.util.List;
 
 @RestController
@@ -26,7 +31,7 @@ public class SearchController
     }
 
     @RequestMapping(value = "/search", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Object search2() throws Exception
+    public Object search() throws Exception
     {
         Resource resource = new PathMatchingResourcePatternResolver().getResource("classpath:/json/tags.json");
         try

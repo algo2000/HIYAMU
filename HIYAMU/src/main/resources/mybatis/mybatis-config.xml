@@ -6,5 +6,6 @@
     </settings>
     <typeAliases>
         <typeAlias alias="tagVO" type="com.hiyamu.vo.TagVO"/>
+        <typeAlias alias="userVO" type="com.hiyamu.vo.UserVO"/>
     </typeAliases>
 </configuration>

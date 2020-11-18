@@ -29,7 +29,7 @@ $(document).on("focusin propertychange paste input","#search",function(){
     }
 
     let result = [];
-    const regex = new RegExp(currentVal, 'gi');
+    let regex = new RegExp(currentVal, 'gi');
     for(let i = 0; i<json.length;i++)
     {
         if(json[i].search(regex)!=-1)
@@ -71,7 +71,7 @@ $(document).on("focusin propertychange paste input","#search",function(){
 
 $(document).ready(function(){
     $.ajax({
-        url: "/search2",
+        url: "/search",
         type: "POST",
         dataType: "json",
         success: function (result) {
