@@ -5,4 +5,7 @@
     <insert id="signUp" parameterType="userVO">
         INSERT INTO user (user_id,password,salt,email) VALUES (#{user_id}, #{password}, #{salt}, #{email})
     </insert>
+    <select id="getSalt" parameterType="string" resultType="string">
+        SELECT salt FROM user WHERE user_id = #{id}
+    </select>
 </mapper>

@@ -19,8 +19,8 @@
         HIYAMU.la
       </div>
       <form id="sign-in-form" action="/sign-in" method="POST">
-        <input type="text" class="input-text" placeholder="id">
-        <input type="password" class="input-text" placeholder="password">
+        <input type="text" name="user_id" class="input-text" placeholder="user">
+        <input type="password"  name="password" class="input-text" placeholder="password">
         <div class="sign-in-contents">
           <input type="submit" value="Sign In" autocomplete="off" class="button">
         </div>
