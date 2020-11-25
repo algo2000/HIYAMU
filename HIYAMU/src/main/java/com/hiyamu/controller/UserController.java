@@ -1,6 +1,7 @@
 package com.hiyamu.controller;
 
 import com.hiyamu.exception.IdNotExistException;
+import com.hiyamu.exception.WrongPasswordException;
 import com.hiyamu.service.UserService;
 import com.hiyamu.vo.UserVO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,8 +18,12 @@ public class UserController
     private UserService userService;
 
     @RequestMapping(value = "/sign-in", method = RequestMethod.GET)
-    public String signInHome()
+    public String signInHome(HttpSession session)
     {
+        if(session.getAttribute("id") != null)
+        {
+            return "redirect:/";
+        }
         return "sign/signIn";
     }
 
@@ -26,26 +31,36 @@ public class UserController
     public String signIn(UserVO userVO,HttpSession session) throws Exception
     {
         userService.signIn(userVO);
-
         session.setAttribute("id",userVO.getUser_id());
-        return "home";
+        return "redirect:/";
     }
 
     @RequestMapping(value = "/sign-up", method = RequestMethod.GET)
-    public String signUpHome()
+    public String signUpHome(HttpSession session)
     {
+        if(session.getAttribute("id") != null)
+        {
+            return "redirect:/";
+        }
         return "sign/signUp";
     }
 
     @RequestMapping(value = "/sign-up", method = RequestMethod.POST)
-    public String signUp(UserVO userVO,HttpSession session) throws Exception
+    public String signUp(UserVO userVO) throws Exception
     {
         if(userVO.getUser_id() == "" || userVO.getPassword() == "" || userVO.getEmail() == "")
         {
             throw new NullPointerException();
         }
         userService.signUp(userVO);
-        return "sign/signIn";
+        return "redirect:sign-in";
+    }
+
+    @RequestMapping(value = "/sign-out", method = RequestMethod.GET)
+    public String signOut(HttpSession session)
+    {
+        session.removeAttribute("id");
+        return "redirect:sign-in";
     }
 
     @ResponseBody
@@ -67,5 +82,12 @@ public class UserController
     public String idNotExistException(Exception e)
     {
         return "ID does not exist.";
+    }
+
+    @ResponseBody
+    @ExceptionHandler(WrongPasswordException.class)
+    public String wrongPasswordException(Exception e)
+    {
+        return "Wrong Password.";
     }
 }

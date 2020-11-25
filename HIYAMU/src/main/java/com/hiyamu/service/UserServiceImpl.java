@@ -1,8 +1,10 @@
 package com.hiyamu.service;
 
 import com.hiyamu.dao.UserDAO;
-import com.hiyamu.exception.IdNotExistException;
 import com.hiyamu.vo.UserVO;
+
+import com.hiyamu.exception.IdNotExistException;
+import com.hiyamu.exception.WrongPasswordException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,7 +29,11 @@ public class UserServiceImpl implements UserService
         {
             throw new IdNotExistException();
         }
-        System.out.println(salt);
+        int count = userDAO.signIn(userVO.getUser_id(),passwordToHash(userVO.getPassword(),salt));
+        if (count == 0)
+        {
+            throw new WrongPasswordException();
+        }
     }
 
     @Override

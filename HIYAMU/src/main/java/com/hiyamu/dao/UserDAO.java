@@ -10,6 +10,6 @@ import org.springframework.stereotype.Repository;
 public interface UserDAO
 {
     void signUp(UserVO userVO) throws Exception;
-    void signIn(UserVO userVO) throws Exception;
-    String getSalt(String id);
+    int signIn(@Param("user_id") String user_id,@Param("password") String password) throws Exception;
+    String getSalt(String user_id);
 }
