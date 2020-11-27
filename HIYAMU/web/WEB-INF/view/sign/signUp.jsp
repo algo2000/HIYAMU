@@ -12,6 +12,7 @@
     <title>Manga</title>
     <link href="${pageContext.request.contextPath}/static/css/sign/signUp.css" rel="stylesheet">
   </head>
+  <jsp:include page="../include/header.jsp"/>
   <body oncontextmenu="return false" ondragstart="return false" onselectstart="return false">
   <div id="box">
     <div id="sign-up-box">

@@ -16,6 +16,7 @@
     <link href="${pageContext.request.contextPath}/static/css/search/search.css" rel="stylesheet">
   </head>
   <body>
+    <jsp:include page="include/header.jsp"/>
     <div id="js"></div>
     <div id="search_box">
       <div id="title">

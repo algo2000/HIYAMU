@@ -7,6 +7,7 @@ import com.hiyamu.vo.UserVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
 import java.sql.SQLIntegrityConstraintViolationException;
@@ -27,12 +28,13 @@ public class UserController
         return "sign/signIn";
     }
 
+    @ResponseBody
     @RequestMapping(value = "/sign-in", method = RequestMethod.POST)
     public String signIn(UserVO userVO,HttpSession session) throws Exception
     {
         userService.signIn(userVO);
         session.setAttribute("id",userVO.getUser_id());
-        return "redirect:/";
+        return "200";
     }
 
     @RequestMapping(value = "/sign-up", method = RequestMethod.GET)
