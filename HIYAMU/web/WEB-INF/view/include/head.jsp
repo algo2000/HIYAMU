@@ -10,5 +10,6 @@
 <meta html-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
 <%--<script type="module" src="${pageContext.request.contextPath}/static/js/init/init.js"></script>--%>
+<link href="${pageContext.request.contextPath}/static/css/header/header.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/static/css/init/init.css" rel="stylesheet">
 <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>

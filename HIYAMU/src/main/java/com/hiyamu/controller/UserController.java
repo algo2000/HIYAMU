@@ -47,6 +47,7 @@ public class UserController
         return "sign/signUp";
     }
 
+    @ResponseBody
     @RequestMapping(value = "/sign-up", method = RequestMethod.POST)
     public String signUp(UserVO userVO) throws Exception
     {
@@ -55,7 +56,7 @@ public class UserController
             throw new NullPointerException();
         }
         userService.signUp(userVO);
-        return "redirect:sign-in";
+        return "200";
     }
 
     @RequestMapping(value = "/sign-out", method = RequestMethod.GET)

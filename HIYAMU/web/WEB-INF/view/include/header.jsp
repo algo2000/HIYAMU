@@ -7,7 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%--<script type="module" src="${pageContext.request.contextPath}/static/js/init/init.js"></script>--%>
-<link href="${pageContext.request.contextPath}/static/css/header/header.css" rel="stylesheet">
+<%--<link href="${pageContext.request.contextPath}/static/css/header/header.css" rel="stylesheet">--%>
 <div id="header">
     <div id="nav-box">
         <div id="menu-box">
@@ -23,6 +23,8 @@
             <%
                 //    HttpSession session = new HttpServlet();
                 String user_id = (String)session.getAttribute("id");
+                String uri = request.getRequestURI();
+                uri = uri.replace("/WEB-INF/view/sign/","").replace(".jsp","");
                 if(user_id != null)
                 {
             %>
@@ -31,10 +33,18 @@
                 }
                 else
                 {
+                    if(uri.equals("signUp"))
+                    {
             %>
-                    <button class="sign-button" id="sign-in-button" onClick="location.href='/sign-in'">Sign In</button>
-                    <button class="sign-button" id="sign-up-button" onClick="location.href='/sign-up'">Sign Up</button>
+                        <button class="sign-button" id="sign-in-button" onClick="location.href='/sign-in'">Sign In</button>
             <%
+                    }
+                    else
+                    {
+            %>
+                        <button class="sign-button" id="sign-up-button" onClick="location.href='/sign-up'">Sign Up</button>
+            <%
+                    }
                 }
             %>
         </div>

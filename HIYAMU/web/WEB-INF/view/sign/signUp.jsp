@@ -10,24 +10,41 @@
   <head>
     <jsp:include page="../include/head.jsp"/>
     <title>Manga</title>
-    <link href="${pageContext.request.contextPath}/static/css/sign/signUp.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/static/css/sign/sign.css" rel="stylesheet">
+    <script type="module" src="${pageContext.request.contextPath}/static/js/sign/sign_ajax.js"></script>
   </head>
-  <jsp:include page="../include/header.jsp"/>
-  <body oncontextmenu="return false" ondragstart="return false" onselectstart="return false">
-  <div id="box">
-    <div id="sign-up-box">
-      <div id="title">
-        HIYAMU.la
-      </div>
-      <form id="sign-up-form" action="/sign-up" method="POST">
-        <input type="text" name="user_id" class="input-text" placeholder="id">
-        <input type="password" name="password" class="input-text" placeholder="password">
-        <input type="text" name="email" class="input-text" placeholder="email">
-        <div class="sign-up-contents">
-          <input type="submit" value="Sign Up" autocomplete="off" class="button">
+  <body>
+    <jsp:include page="../include/header.jsp"/>
+    <div id="box">
+      <jsp:include page="../include/logo.jsp"/>
+      <form id="sign-form" name="sign-form">
+        <div class="sign-box" id="js-id">
+          <div class="sign-input-box">
+            <input class="sign-input" autocomplete="off" type="text" placeholder="ID" name="user_id" autofocus>
+          </div>
+          <div class="button-box">
+            <span class="button next-button sign-button-big">Next</span>
+          </div>
+        </div>
+        <div class="sign-box" id="js-email" style="display: none;">
+          <div class="sign-input-box">
+            <input class="sign-input" autocomplete="off" type="text" placeholder="E-mail" name="email">
+          </div>
+          <div class="button-box">
+            <span class="button back-button sign-button-small button-left">Back</span>
+            <span class="button next-button sign-button-small button-right">Next</span>
+          </div>
+        </div>
+        <div class="sign-box" id="js-password" style="display: none;">
+          <div class="sign-input-box">
+            <input class="sign-input" autocomplete="off" type="password" placeholder="Password" name="password">
+          </div>
+          <div class="button-box">
+            <span class="button back-button sign-button-small button-left">Back</span>
+            <span class="button sign-button-small button-right" id="sign-button">Sign Up</span>
+          </div>
         </div>
       </form>
     </div>
-  </div>
   </body>
 </html>

@@ -1,16 +1,3 @@
-*
-{
-    font-family: 'Noto Sans', sans-serif;
-    color: white;
-}
-body
-{
-    background-color: rgb(24, 24, 24);
-}
-input:focus, button:focus{
-    outline: none;
-    opacity: 90%;
-}
 .button
 {
     display: inline-block;
@@ -18,7 +5,6 @@ input:focus, button:focus{
     text-align: center;
     line-height: 50px;
 }
-
 #box
 {
     background-color: rgb(24, 24, 24);
@@ -28,12 +14,6 @@ input:focus, button:focus{
     transform: translate(-50%,-50%);
     top: 50%;
     left: 50%;
-}
-#sign-in-title
-{
-    font-size: 20px;
-    color: rgb(212, 212, 212);
-    text-align: center;
 }
 .sign-input-box
 {
@@ -61,7 +41,6 @@ input:focus, button:focus{
 {
     width: 100%;
     height: 50px;
-    border: none;
     background-color: rgb(74, 86, 255);
     border-radius: 10px;
     font-size: 15px;
@@ -70,7 +49,6 @@ input:focus, button:focus{
 {
     width: 140px;
     height: 50px;
-    border: none;
     border-radius: 10px;
     font-size: 15px;
 }
@@ -84,4 +62,9 @@ input:focus, button:focus{
 {
     float: right;
     background-color: rgb(52, 106, 255);
+}
+#logo
+{
+    display: block;
+    margin: auto;
 }
