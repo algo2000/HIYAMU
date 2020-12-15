@@ -8,7 +8,7 @@ $(document).on("click",".tag-close",function(){
   });
 });
 
-$(document).on('keydown','#search', function(e) {
+$(document).on('keydown','#search-input', function(e) {
   if( e.which == 8 || e.which == 46 )
   {
     if($(this).val() === "" && $(".tag").length !== 0)

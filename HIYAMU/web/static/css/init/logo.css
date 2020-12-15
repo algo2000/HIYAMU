@@ -9,4 +9,6 @@
 #logo
 {
     cursor: pointer;
+    display: block;
+    margin: auto;
 }

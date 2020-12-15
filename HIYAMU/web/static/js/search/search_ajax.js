@@ -1,27 +1,29 @@
 var json = null;
 $(document).on("click","body",function(e)
 {
-    if(!$(e.target).hasClass("auto-element")&&!$(e.target).is("input#search"))
+    if(!$(e.target).hasClass("auto-element")&&!$(e.target).is("input#search-input"))
     {
         $("#auto-complete").animate({
-            "height" : "0px"
+            "height" : "0px",
+            "padding" : "0px"
         }, 200, function() {
             $("#auto-complete").empty();
-            $("#search-tags").css({
+            $("#search-tag-box").css({
                 "border-radius":"10px"
             });
         })
     }
 });
-$(document).on("focusin propertychange paste input","#search",function(){
+$(document).on("focusin propertychange paste input","#search-input",function(){
     var currentVal = $(this).val();
     if(currentVal === "")
     {
         $("#auto-complete").animate({
-            "height" : "0px"
+            "height" : "0px",
+            "padding" : "0px"
         }, 200, function() {
             $("#auto-complete").empty();
-            $("#search-tags").css({
+            $("#search-tag-box").css({
                 "border-radius":"10px"
             });
         })
@@ -29,13 +31,13 @@ $(document).on("focusin propertychange paste input","#search",function(){
     }
 
     let result = [];
-    let regex = new RegExp(currentVal, 'gi');
+    const regex = new RegExp('^[0-9a-zA-Z]([0-9a-zA-Z])*:'+currentVal, 'gi');
     for(let i = 0; i<json.length;i++)
     {
         if(json[i].search(regex)!=-1)
         {
             result.push(json[i]);
-            if(result.length == 5)
+            if(result.length == 8)
             {
                 break;
             }
@@ -45,15 +47,17 @@ $(document).on("focusin propertychange paste input","#search",function(){
     $("#auto-complete").empty();
     if(obj.length !== 0)
     {
-        $("#search-tags").css({
+        $("#search-tag-box").css({
             "border-radius":"10px 10px 0px 0px"
         });
+        $("#auto-complete").css("padding","0px 20px 10px 20px");
     }
     else
     {
-        $("#search-tags").css({
+        $("#search-tag-box").css({
             "border-radius":"10px"
         });
+        $("#auto-complete").css("padding","0px")
     }
     $("#auto-complete").css("height","auto");
     for(let i = 0; i<obj.length;i++)
